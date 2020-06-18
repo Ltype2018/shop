@@ -1,16 +1,18 @@
 <template>
-    <div class="home">
-        <router-view></router-view>
-     <FootTab/>   
-    </div>
+  <div class="home">
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    <FootTab />
+  </div>
 </template>
 
 <script>
-import FootTab from '@/views/FootTab'
+import FootTab from "@/views/FootTab";
 export default {
-    name:'Home',
-    components:{
-        FootTab
-    }
-}
+  name: "Home",
+  components: {
+    FootTab
+  }
+};
 </script>

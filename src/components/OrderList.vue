@@ -11,8 +11,8 @@
           class="list-card"
         >
           <template #footer>
-            <van-button size="medium" @click="addNum(item)">+</van-button>
-            <van-button size="medium" @click="reduceNum(item)">-</van-button>
+            <van-button size="mini" @click="addNum(item)">+</van-button>
+            <van-button size="mini" @click="reduceNum(item)">-</van-button>
           </template>
         </van-card>
         <template #right>
@@ -45,30 +45,6 @@ export default {
           icon: "特价",
           checked: true
         },
-        {
-          id: 2,
-          title: "bbbbbbb",
-          price: 10,
-          num: 8,
-          icon: "特价",
-          checked: true
-        },
-        {
-          id: 3,
-          title: "cccc",
-          price: 1,
-          num: 7,
-          icon: "特价",
-          checked: true
-        },
-        {
-          id: 4,
-          title: "ddddd",
-          price: 1000,
-          num: 6,
-          icon: "特价",
-          checked: true
-        }
       ]
     };
   },

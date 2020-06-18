@@ -1,7 +1,8 @@
 //axios 封装
 import axios from 'axios'
-import {router} from '@/router'
+import router from '@/router'
 import store from '@/store'
+import {Toast} from 'vant'
 
 
 

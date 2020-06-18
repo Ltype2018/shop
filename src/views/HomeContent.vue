@@ -4,7 +4,7 @@
       <!--头部横幅-->
       <van-swipe :autoplay="3000">
         <van-swipe-item v-for="(image, index) in images" :key="index">
-          <img v-lazy="image" />
+          <van-image lazy-load :src="image" />
         </van-swipe-item>
       </van-swipe>
     </header>
@@ -17,25 +17,29 @@
       </van-grid>
     </section>
     <section class="time-to-shopping">
-        <img :src="toShoping">
+        <van-image :src="toShoping" />
     </section>
     <!--中间的滚动图-->
     <section class="mid-img">
       <van-swipe :autoplay="3000">
         <van-swipe-item v-for="(midImg, index) in midImgs" :key="index">
-          <img v-lazy="midImg">
+          <van-image lazy-load :src="midImg" />
         </van-swipe-item>
       </van-swipe>
     </section>
     <!--商品列表-->
-    <GoodsCard/>
+    <productsCard :productsList="productsList"/>
   </div>
 </template>
 
 <script>
-import GoodsCard from '@/components/GoodsCard'
+import ProductsCard from '@/components/ProductsCard'
+import {mapState} from 'vuex'
 export default {
   name: "HomeContent",
+  components:{
+    ProductsCard
+  },
   data() {
     return {
       images: [
@@ -62,9 +66,20 @@ export default {
       ]
     };
   },
-  components:{
-    GoodsCard
+  computed:{
+    ...mapState({
+      productsList:state => state.products.productsList 
+    })
+  },
+  mounted(){
+    this.$store.dispatch('products/getProducts')
   }
+
 };
 </script>
 
+<style scoped>
+.van-cell{
+  padding:0
+}
+</style>
