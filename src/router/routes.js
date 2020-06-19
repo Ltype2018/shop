@@ -4,6 +4,8 @@ import ShoppingCart from '@/views/ShoppingCart'
 import VShopList from '@/views/VShopList'
 import User from '@/views/User'
 import ShopsNearby from '@/views/ShopsNearby'
+import ProductDetail from '@/components/ProductDetail'
+
 
 const routes = [
     {
@@ -29,8 +31,12 @@ const routes = [
             {
                 path:'shops-nearby',
                 component:ShopsNearby
-            }
-        ]
+            },
+        ],
+    },
+    {
+        path:'/product/detail',
+        component:ProductDetail
     }
 ]
 

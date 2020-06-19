@@ -17,5 +17,13 @@ const fetchShopList = () =>instance({
     method:'get'
 })
 
+/**
+ * 获取商品详情
+ */
+const fetchProductDetail = () =>instance({
+    url:base["product-detail"],
+    method:'get'
+})
 
-export {fetchProducts,fetchShopList}
+
+export {fetchProducts,fetchShopList,fetchProductDetail}
