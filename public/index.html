@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="viewport" id="WebViewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">        
-    <style>
-        html {
-            font-size: 1px;
-        }            
-        * {
-            padding: 0;
-            margin: 0;
-        }
-    </style>
-    <script>
-        var viewport = document.querySelector("meta[name=viewport]");
-  
-        if (window.devicePixelRatio == 1) {
-            viewport.setAttribute('content', 'width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no');
-        }
-        if (window.devicePixelRatio == 2) {
-            viewport.setAttribute('content', 'width=device-width,initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no');
-        }
-        if (window.devicePixelRatio == 3) {
-            viewport.setAttribute('content', 'width=device-width,initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no');
-        }
-        var docEl = document.documentElement;
-        var fontsize = 32* (docEl.clientWidth / 750) + 'px';
-        docEl.style.fontSize = fontsize;
-    </script>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="viewport" id="WebViewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <style>
+    html {
+      font-size: 1px;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+  <script>
+    var viewport = document.querySelector("meta[name=viewport]");
+
+    if (window.devicePixelRatio == 1) {
+      viewport.setAttribute('content', 'width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no');
+    }
+    if (window.devicePixelRatio == 2) {
+      viewport.setAttribute('content', 'width=device-width,initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no');
+    }
+    if (window.devicePixelRatio == 3) {
+      viewport.setAttribute('content', 'width=device-width,initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no');
+    }
+    var docEl = document.documentElement;
+    var fontsize = 32 * (docEl.clientWidth / 750) + 'px';
+    docEl.style.fontSize = fontsize;
+  </script>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+      Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
 </html>

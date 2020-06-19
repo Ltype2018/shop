@@ -2,8 +2,8 @@
 <!-- 微店组件 -->
   <div class="v_shop">
     <van-card 
-      :desc="`宝贝数${vshop.totalgoods}|关注度${vshop.follower}`"
-      :title="vshop.shopname"
+      :desc="`宝贝数 ${vshop.totalgoods} | 关注度 ${vshop.follower}`"
+      :title="`${vshop.shopname}店铺`"
       :thumb="vshop.photo"
     >
       <template #tags>

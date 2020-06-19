@@ -19,7 +19,6 @@ const getters = {
      */
     cartProducts(state, getters, rootState){
         return state.items.map(({id, quantity,checked}) =>{
-            console.log(rootState.productsList)
             const product = rootState.products.productsList.find(product =>product.id === id)
             return{
                 title:product.title,

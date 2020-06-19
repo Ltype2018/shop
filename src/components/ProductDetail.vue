@@ -9,45 +9,40 @@
       </van-swipe>
     </section>
     <section class="product_info">
-      <van-cell :title="`￥${product.price}`"  style="color:red; font-size:20px"></van-cell>
-      <van-row type="flex" justify="space-around">
-        <van-col span="6">销量{{product.sales}}件</van-col>
-        <van-col span="6">免运费</van-col>
-        <van-col span="6">{{product.send_product_time}}h内发货</van-col>
-      </van-row>
+      <van-cell :title="`￥${product.price}`" style="color:red; font-size:25px"></van-cell>
+      <van-cell :title="product.title" size="large" :label="product.label"></van-cell>
       <van-cell-group>
-      <van-cell is-link title="商品规格"></van-cell>
-      <van-cell is-link>
-        <template #title>
-          <van-tag type="danger">满75减10</van-tag>
-        </template>
-      </van-cell>
-      <van-cell icon="location-o" :title="product.address"></van-cell>
+        <van-cell is-link>
+          <template #title>
+            <van-tag type="danger">满75减10</van-tag>
+          </template>
+        </van-cell>
+        <van-cell is-link title="商品规格"></van-cell>
+        <van-cell icon="location-o" :title="product.address" size="large" label="免运费 • 7天内无理由退货"></van-cell>
       </van-cell-group>
     </section>
     <section class="product_evaluate">
-     <van-cell title="商品评价" is-link value="20条好评"></van-cell>
+      <van-cell title="商品评价" is-link value="20条好评"></van-cell>
     </section>
-    <section class="product_shop"></section>
     <section class="product_tobuy">
       <van-goods-action>
         <van-goods-action-icon icon="chat-o" text="客服" />
-        <van-goods-action-icon icon="cart-o" text="购物车" badge="5" />
-        <van-goods-action-button type="warning" text="加入购物车" />
-        <van-goods-action-button type="danger" text="立即购买" />
+        <van-goods-action-icon icon="cart-o" to="/home/shopping-cart"  text="购物车" :badge="badge" />
+        <van-goods-action-button type="warning" text="加入购物车" @click="showBought" />
+        <van-goods-action-button type="danger" text="立即购买" @click.native="changeSku" />
       </van-goods-action>
     </section>
-    <!--f
     <section class="product_sku">
       <van-sku
         v-model="show"
         :sku="sku"
         :goods="goods"
+        :hide-stock="sku.hide_stock"
         @buy-clicked="onBuyClicked"
-        @add-cart="onAddCartClicked"
+        @add-cart="showBought"
       />
     </section>
-    -->
+    <div class="empty"></div>
   </div>
 </template>
 
@@ -57,14 +52,61 @@ export default {
   name: "ProductDetail",
   data() {
     return {
-      show: false
+      show: false,
+      sku: {
+        tree: [
+          {
+            k: "颜色",
+            v: [
+              {
+                id: "30349",
+                name: "红色",
+                imgUrl: "http://dummyimage.com/200x200/d179f2",
+                previewImgUrl: "http://dummyimage.com/200x200/d179f2"
+              }
+            ],
+            k_s: "s2"
+          }
+        ],
+        list: [
+          {
+            id: 2259,
+            price: 2500,
+            s2: "30349",
+            s3: "0",
+            stock_num: 110
+          }
+        ],
+        price: "25",
+        stock_num: 110,
+        none_sku: false,
+        hide_stock: false
+      },
+      goods: {
+        picture: "http://dummyimage.com/200x200/d179f2"
+      }
     };
   },
   computed: mapState({
-    product: state => state.products.product_detail
+    product: state => state.products.product_detail,
+    badge:state => state.shopping_cart.items.length
   }),
   mounted() {
     this.$store.dispatch("products/getProductDetail");
+  },
+  methods: {
+    changeSku() {
+      this.show = true;
+    },
+    showBought(){
+      this.$toast.success('已加入购物车')
+    }
   }
 };
 </script>
+
+<style scoped>
+.empty{
+  height: 60px;
+}
+</style>

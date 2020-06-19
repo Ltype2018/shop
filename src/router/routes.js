@@ -6,6 +6,8 @@ import User from '@/views/User'
 import ShopsNearby from '@/views/ShopsNearby'
 import ProductDetail from '@/components/ProductDetail'
 
+import Address from '@/components/Address'
+
 
 const routes = [
     {
@@ -37,6 +39,10 @@ const routes = [
     {
         path:'/product/detail',
         component:ProductDetail
+    },
+    {
+        path:'/address',
+        component:Address
     }
 ]
 

@@ -25,9 +25,8 @@ const actions = {
     },
     getProductDetail({commit}){
         fetchProductDetail().then(res =>{
-            console.log('huoquxiangqing')
+            console.log('获取商品详情')
             commit('UPDATE_PRODUCT_DETAIL',res.data.product)
-            console.log(res.data.product)
         })
     }
 }
