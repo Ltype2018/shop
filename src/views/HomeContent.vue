@@ -28,7 +28,8 @@
       </van-swipe>
     </section>
     <!--商品列表-->
-    <productsCard :productsList="productsList"/>
+    <keep-alive><productsCard :productsList="productsList"/></keep-alive>
+    
   </div>
 </template>
 

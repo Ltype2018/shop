@@ -3,7 +3,7 @@ import HomeContent from '@/views/HomeContent'
 import ShoppingCart from '@/views/ShoppingCart'
 import VShopList from '@/views/VShopList'
 import User from '@/views/User'
-import ShopsNearby from '@/views/ShopsNearby'
+import Classification from '@/views/Classification'
 import ProductDetail from '@/components/ProductDetail'
 
 import Address from '@/components/Address'
@@ -31,14 +31,15 @@ const routes = [
                 component:User
             },
             {
-                path:'shops-nearby',
-                component:ShopsNearby
+                path:'classification',
+                component:Classification
             },
         ],
     },
-    {
-        path:'/product/detail',
-        component:ProductDetail
+    {   //将商品id传参到详情页面
+        path:'/product/detail/:id',
+        component:ProductDetail,
+        props:true
     },
     {
         path:'/address',

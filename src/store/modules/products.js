@@ -20,7 +20,7 @@ const mutations = {
 const actions = {
     getProducts({ commit }) {
         fetchProducts().then(res => {
-            commit('UPDATE_PRODUCTS', res.data.products)
+            commit('UPDATE_PRODUCTS', res.data.productsList)
         })
     },
     getProductDetail({commit}){

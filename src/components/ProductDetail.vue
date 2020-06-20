@@ -4,7 +4,7 @@
     <section class="product_images">
       <van-swipe>
         <van-swipe-item v-for="(image,index) in product.img" :key="index">
-          <van-image fit="contain" lazy-load :src="image.url"></van-image>
+          <van-image fit="contain" lazy-load :src="image.show_url"></van-image>
         </van-swipe-item>
       </van-swipe>
     </section>
@@ -28,7 +28,7 @@
       <van-goods-action>
         <van-goods-action-icon icon="chat-o" text="客服" />
         <van-goods-action-icon icon="cart-o" to="/home/shopping-cart"  text="购物车" :badge="badge" />
-        <van-goods-action-button type="warning" text="加入购物车" @click="showBought" />
+        <van-goods-action-button type="warning" text="加入购物车" @click="addProductToCart(product)" />
         <van-goods-action-button type="danger" text="立即购买" @click.native="changeSku" />
       </van-goods-action>
     </section>
@@ -38,8 +38,7 @@
         :sku="sku"
         :goods="goods"
         :hide-stock="sku.hide_stock"
-        @buy-clicked="onBuyClicked"
-        @add-cart="showBought"
+        @add-cart="addProductToCart(product)"
       />
     </section>
     <div class="empty"></div>
@@ -47,9 +46,10 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters,mapActions } from "vuex";
 export default {
   name: "ProductDetail",
+  props:['id'],
   data() {
     return {
       show: false,
@@ -88,19 +88,18 @@ export default {
     };
   },
   computed: mapState({
-    product: state => state.products.product_detail,
-    badge:state => state.shopping_cart.items.length
+    badge:state => state.shopping_cart.items.length,
+    ...mapGetters('shopping_cart',['productDetailInfo']),
+    product(){
+      console.log(this.productDetailInfo(this.id))
+      return this.productDetailInfo(this.id)
+    }
   }),
-  mounted() {
-    this.$store.dispatch("products/getProductDetail");
-  },
   methods: {
+    ...mapActions('shopping_cart',['addProductToCart']),
     changeSku() {
       this.show = true;
     },
-    showBought(){
-      this.$toast.success('已加入购物车')
-    }
   }
 };
 </script>

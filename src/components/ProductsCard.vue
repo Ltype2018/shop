@@ -1,9 +1,9 @@
 <template>
   <div class="products-card">
     <van-grid :border="false" :column-num="2">
-      <van-grid-item  v-for="product in productsList" :key="product.id">
-        <router-link to="/product/detail">
-          <van-image lazy-load :src="product.img"></van-image>
+      <van-grid-item  v-for="product in productsList" :key="product.title">
+        <router-link :to="{path:`/product/detail/${product.id}`}">
+          <van-image lazy-load :src="product.pre_img"></van-image>
           <van-cell :title="product.title" />
         </router-link>
         <van-cell :title="`￥ ${product.price}`" style="color:red;font-size:18px"></van-cell>
