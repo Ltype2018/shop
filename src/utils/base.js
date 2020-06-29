@@ -8,7 +8,10 @@ const base = {
     'category':`/category.json`,
     'group-data':`/groups.json`,
     'discover-shop':`/discover_shop.json`,
-    'together-buy':`/together_buy.json`
+    'together-buy':`/together_buy.json`,
+    'circle-head':`/circle_head.json`,
+    'circle-content':`/circle_content1.json`,
+    'circle-content-test':`/circle_content2.json`
 }
 
 export default base

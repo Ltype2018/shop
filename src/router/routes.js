@@ -7,48 +7,53 @@ import Categories from '@/views/Categories'
 import ProductDetail from '@/components/ProductDetail'
 import Address from '@/components/Address'
 import Pay from '@/components/Pay'
+import DiscoverGroupCircle from '@/views/DiscoverGroupCircle'
 
 
 const routes = [
     {
-        path:'/home',
-        component:Home,
-        children:[
+        path: '/home',
+        component: Home,
+        children: [
             {
-                path:'home-content',
-                component:HomeContent,
+                path: 'home-content',
+                component: HomeContent,
             },
             {
-                path:'shopping-cart',
-                component:ShoppingCart
+                path: 'shopping-cart',
+                component: ShoppingCart
             },
             {
-                path:'discover',
-                component:Discover
+                path: 'discover',
+                component: Discover
             },
             {
-                path:'user',
-                component:User
+                path: 'user',
+                component: User
             },
             {
-                path:'address',
-                component:Address
+                path: 'address',
+                component: Address
             },
             {
-                path:'pay',
-                component:Pay
+                path: 'pay',
+                component: Pay
             },
             {
-                path:'category',
-                component:Categories
+                path: 'category',
+                component: Categories
+            },
+            {
+                path: 'circle',
+                component: DiscoverGroupCircle
             }
         ],
     },
     {   //将商品id传参到详情页面
-        path:'/product/detail/:id',
-        component:ProductDetail,
-        props:true
-    },
+        path: '/product/detail/:id',
+        component: ProductDetail,
+        props: true
+    }
 
 ]
 

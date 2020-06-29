@@ -25,7 +25,7 @@ export default {
 <style scoped>
 .van-grid-item{
   padding: 3px;
-  background-color: rgb(211, 208, 208);
+  background-color:#f7f7f7;
 }
 .van-grid-item >>> .van-grid-item__content {
     padding: 0px;

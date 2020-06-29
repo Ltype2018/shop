@@ -1,14 +1,15 @@
 <template>
-<div style="padding:0 20px">
-  <h3 style="margin-bottom:10px">有趣的圈子</h3>
+  <div style="padding:0 20px">
+    <h3 style="margin-bottom:10px">有趣的圈子</h3>
     <div class="discover_group">
-    <section class="discover_group_item" v-for="item in groups" :key="item.title">
-      <van-image round width="70px" height="70px" lazy-load :src="item.url" fit="cover" />
-      <div style="font-size:15px;font-weight:bold">{{item.title}}</div>
-    </section>
+      <section class="discover_group_item" v-for="item in groups" :key="item.title">
+        <router-link to="/home/circle">
+          <van-image round width="70px" height="70px" lazy-load :src="item.url" fit="cover" />
+        </router-link>
+        <div style="font-size:15px;font-weight:bold">{{item.title}}</div>
+      </section>
+    </div>
   </div>
-</div>
-
 </template>
 
 <script>
@@ -24,7 +25,6 @@ export default {
 .discover_group {
   display: flex;
   overflow-x: scroll;
-
 }
 .discover_group_item {
   width: 100px;
@@ -33,10 +33,10 @@ export default {
   flex-shrink: 0;
   white-space: nowrap;
 }
-.van-image{
+.van-image {
   display: block;
-     margin-left: auto; 
-    margin-right:auto; 
+  margin-left: auto;
+  margin-right: auto;
 }
 ::-webkit-scrollbar {
   display: none;
