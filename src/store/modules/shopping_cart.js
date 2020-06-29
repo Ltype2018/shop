@@ -1,14 +1,14 @@
 //购物车数据模块
-import {Toast} from 'vant'
+import { Toast } from 'vant'
 const state = {
-    items:[]
+    items: []
 }
 
 
 //getters
 const getters = {
-    itemsLength(state){
-        return state.items.length 
+    itemsLength(state) {
+        return state.items.reduce((total,item) =>{ return total + item.quantity}, 0)
     },
     /**
      * 
@@ -17,38 +17,46 @@ const getters = {
      * @param {*} rootState
      * //将cart里的元素与products相匹配，生成cartProducts 属性 
      */
-    cartProducts(state, getters, rootState){
-        return state.items.map(({id, quantity,checked}) =>{
-            const product = rootState.products.productsList.find(product =>product.id === id)
-            return{
-                title:product.title,
-                price:product.price,
-                img:product.img,
-                id:product.id,
+    cartProducts(state, getters, rootState) {
+        return state.items.map(({ id, quantity, checked }) => {
+            console.log('获取购物车商品')
+            const product = rootState.products.productsList.find(product => product.id === id)
+            return {
+                title: product.title,
+                price: product.price,
+                img: product.pre_img,
+                id: product.id,
                 quantity,
-                checked:checked
+                checked
             }
         })
     },
-    filteredCartProducts(state,getters){
-         return getters.cartProducts.filter(value =>value.checked)
+    filteredCartProducts(state, getters) {
+        return getters.cartProducts.filter(value => value.checked)
     },
-    
+    /**
+     * 
+     * @param {*} state
+     * 是否为全选 
+     */
+    allChecked(state){
+        return state.items.every(item =>item.checked)
+    },
     /**
      * 商品详情页，通过路由地址传参然后在商品列表中获取商品信息
      */
-    productDetailInfo(state,getters,rootState){
-        return function(id){
+    productDetailInfo(state, getters, rootState) {
+        return function (id) {
             console.log('获取商品详情')
-           const product = rootState.products.productsList.find(product =>product.id == id)
-           return{
-               title:product.title,
-               price:product.price,
-               img:product.img,
-               id:product.id,
-               address:product.address,
-               label:product.label
-           }
+            const product = rootState.products.productsList.find(product => product.id == id)
+            return {
+                title: product.title,
+                price: product.price,
+                img: product.img,
+                id: product.id,
+                address: product.address,
+                label: product.label
+            }
         }
 
     },
@@ -57,10 +65,10 @@ const getters = {
      * @param {*} state 
      * @param {*} getters 
      */
-    cartTotalPrice(state, getters){
-        return getters.filteredCartProducts.reduce((total, product) =>{
+    cartTotalPrice(state, getters) {
+        return getters.filteredCartProducts.reduce((total, product) => {
             return total + product.price * product.quantity
-        },0)
+        }, 0)
     }
 }
 
@@ -73,28 +81,38 @@ const mutations = {
      * @param {*} param1 id: product 的id
      * //存入购买商品信息
      */
-    pushProductToCart(state, {id}){
+    pushProductToCart(state, { id }) {
         state.items.push({
             id,
-            quantity:1,
-            checked:true
+            quantity: 1,
+            checked: true
         })
     },
-    incrementItemQuantity(state, {id}){
+    incrementItemQuantity(state, { id }) {
         const cartItem = state.items.find(item => item.id === id)
         cartItem.quantity++
     },
-    decrementItemQuantity(state,{id}){
-        const cartItem = state.items.find(item =>item.id === id)
+    decrementItemQuantity(state, { id }) {
+        const cartItem = state.items.find(item => item.id === id)
         cartItem.quantity--
     },
-    setChecked(state,status){
-        state.items.forEach(element => {
-            element.checked = status
+    changeQuantity(state,playload){
+        const cartItem = state.items.find(item =>item.id ===playload.item.id)
+        cartItem.quantity = playload.quantity
+    },
+    toggleItem(state,{id}){
+        const cartItem = state.items.find(item =>item.id === id)
+        cartItem.checked = !cartItem.checked
+    },
+  
+
+    //全选
+    toggleAll(state,status){
+        return state.items.forEach(item => {
+            item.checked = status
         });
     }
 }
-
 //actions
 const actions = {
     /**
@@ -103,19 +121,19 @@ const actions = {
      * @param {*} product 
      * //将商品添加到购物车，若不存在则创建，存在则购物车商品数量增加
      */
-    addProductToCart({state, commit}, product){
+    addProductToCart({ state, commit }, product) {
         Toast.success("已加入购物车")
         const cartItem = state.items.find(item => item.id === product.id)
-        if(!cartItem){
-            commit('pushProductToCart',{id:product.id})
-        }else{
+        if (!cartItem) {
+            commit('pushProductToCart', { id: product.id })
+        } else {
             commit('incrementItemQuantity', cartItem)
         }
     },
- 
+
 }
-export default{
-    namespaced:true,
+export default {
+    namespaced: true,
     state,
     getters,
     mutations,

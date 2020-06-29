@@ -1,12 +1,12 @@
 import Home from '@/views/Home'
 import HomeContent from '@/views/HomeContent'
 import ShoppingCart from '@/views/ShoppingCart'
-import VShopList from '@/views/VShopList'
+import Discover from '@/views/Discover'
 import User from '@/views/User'
-import Classification from '@/views/Classification'
+import Categories from '@/views/Categories'
 import ProductDetail from '@/components/ProductDetail'
-
 import Address from '@/components/Address'
+import Pay from '@/components/Pay'
 
 
 const routes = [
@@ -23,17 +23,25 @@ const routes = [
                 component:ShoppingCart
             },
             {
-                path:'v-shoplist',
-                component:VShopList
+                path:'discover',
+                component:Discover
             },
             {
                 path:'user',
                 component:User
             },
             {
-                path:'classification',
-                component:Classification
+                path:'address',
+                component:Address
             },
+            {
+                path:'pay',
+                component:Pay
+            },
+            {
+                path:'category',
+                component:Categories
+            }
         ],
     },
     {   //将商品id传参到详情页面
@@ -41,10 +49,7 @@ const routes = [
         component:ProductDetail,
         props:true
     },
-    {
-        path:'/address',
-        component:Address
-    }
+
 ]
 
 export default routes

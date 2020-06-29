@@ -83,4 +83,7 @@ export default {
 .van-cell{
   padding:0
 }
+.home-content .van-swipe{
+  transform: translateZ(0);
+}
 </style>

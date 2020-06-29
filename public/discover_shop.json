@@ -1,0 +1,32 @@
+[
+    {
+        "title":"安妮的童装店",
+        "log":"/discover-shop/log2.png",
+        "follower":"4750",
+        "url":"/discover-shop/children.png"
+    },
+    {
+        "title":"韩式风格店",
+        "log":"/discover-shop/log3.jpg",
+        "follower":"8197",
+        "url":"/discover-shop/cloth.jpeg"
+    },
+    {
+        "title":"beauty&share",
+        "log":"/discover-shop/log4.png",
+        "follower":"8787",
+        "url":"/discover-shop/dress.jpg"
+    },
+    {
+        "title":"舌尖上的美味",
+        "log":"/discover-shop/log1.jpg",
+        "follower":"23345",
+        "url":"/discover-shop/food.png"
+    },
+    {
+        "title":"汉服宫",
+        "log":"/discover-shop/log5.jpg",
+        "follower":"3254",
+        "url":"/discover-shop/hancloth.jfif"
+    }
+]

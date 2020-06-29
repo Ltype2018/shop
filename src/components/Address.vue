@@ -41,7 +41,7 @@ export default {
   },
   methods:{
       onClickLeft(){
-          this.$router.push({path:'/home/user'})
+          this.$router.go(-1)
       }
   }
 };

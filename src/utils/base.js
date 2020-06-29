@@ -4,7 +4,11 @@ const base = {
     'user-detail':`${BASE_URL}/user-detail`,
     'products-list':`${BASE_URL}/products-list`,
     'vshop-list':`${BASE_URL}/vshop-list`,
-    'product-detail':`${BASE_URL}/product/detail/13579`
+    'product-detail':`${BASE_URL}/product/detail/13579`,
+    'category':`/category.json`,
+    'group-data':`/groups.json`,
+    'discover-shop':`/discover_shop.json`,
+    'together-buy':`/together_buy.json`
 }
 
 export default base

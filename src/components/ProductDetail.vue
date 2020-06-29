@@ -1,6 +1,7 @@
 <template>
   <!--商品详情-->
   <div class="product_cart">
+    <van-icon name="wap-home-o" size="30px" style="position:absolute; z-index:999; top:40px; left:30px" @click="goHome" />
     <section class="product_images">
       <van-swipe>
         <van-swipe-item v-for="(image,index) in product.img" :key="index">
@@ -27,7 +28,7 @@
     <section class="product_tobuy">
       <van-goods-action>
         <van-goods-action-icon icon="chat-o" text="客服" />
-        <van-goods-action-icon icon="cart-o" to="/home/shopping-cart"  text="购物车" :badge="badge" />
+        <van-goods-action-icon icon="cart-o" to="/home/shopping-cart"  text="购物车" :badge="itemsLength" />
         <van-goods-action-button type="warning" text="加入购物车" @click="addProductToCart(product)" />
         <van-goods-action-button type="danger" text="立即购买" @click.native="changeSku" />
       </van-goods-action>
@@ -39,6 +40,7 @@
         :goods="goods"
         :hide-stock="sku.hide_stock"
         @add-cart="addProductToCart(product)"
+        @buy-clicked="onBuyClicked"
       />
     </section>
     <div class="empty"></div>
@@ -88,10 +90,8 @@ export default {
     };
   },
   computed: mapState({
-    badge:state => state.shopping_cart.items.length,
-    ...mapGetters('shopping_cart',['productDetailInfo']),
+    ...mapGetters('shopping_cart',['productDetailInfo','itemsLength']),
     product(){
-      console.log(this.productDetailInfo(this.id))
       return this.productDetailInfo(this.id)
     }
   }),
@@ -100,6 +100,12 @@ export default {
     changeSku() {
       this.show = true;
     },
+    onBuyClicked(){
+      this.$router.push({path:"/home/pay"})
+    },
+    goHome(){
+      this.$router.push({path:"/home/home-content"})
+    }
   }
 };
 </script>
