@@ -32,8 +32,8 @@ export default {
   },
   mounted() {
     getGroupData().then(res => {
-      console.log(res.data);
       this.groups = res.data;
+      console.log('加载圈子主页数据')
     });
   }
 };

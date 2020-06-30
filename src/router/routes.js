@@ -8,6 +8,7 @@ import ProductDetail from '@/components/ProductDetail'
 import Address from '@/components/Address'
 import Pay from '@/components/Pay'
 import DiscoverGroupCircle from '@/views/DiscoverGroupCircle'
+import Login from '@/components/Login'
 
 
 const routes = [
@@ -53,6 +54,10 @@ const routes = [
         path: '/product/detail/:id',
         component: ProductDetail,
         props: true
+    },
+    {
+        path:'/test',
+        component:Login
     }
 
 ]
