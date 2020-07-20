@@ -35,7 +35,7 @@ export default {
 .info-container {
   .tag-container {
     font-size: 10px;
-    color: rgb(144, 147, 150);
+    color: #909396;
   }
 }
 .author-info {
@@ -49,7 +49,7 @@ export default {
       align-items: center;
       justify-content: center;
       font-size: 15px;
-      color: rgb(122, 120, 121);
+      color: #7a7879;
 
   }
 

@@ -12,7 +12,9 @@ const base = {
     'together-buy':`/together_buy.json`,
     'circle-head':`/circle_head.json`,
     'circle-content':`/circle_content1.json`,
-    'circle-content-test':`/circle_content2.json`
+    'circle-content-test':`/circle_content2.json`,
+    'evaluate':`${BASE_URL}/evaluates`,
+    'shop':`${BASE_URL}/shop`
 }
 
 export default base

@@ -9,13 +9,7 @@ const fetchProducts = () =>instance({
     method:'get'
 })
 
-/**
- * 获取商家列表
- */
-const fetchShopList = () =>instance({
-    url:base["vshop-list"],
-    method:'get'
-})
+
 
 /**
  * 获取商品详情
@@ -26,4 +20,4 @@ const fetchProductDetail = () =>instance({
 })
 
 
-export {fetchProducts,fetchShopList,fetchProductDetail}
+export {fetchProducts,fetchProductDetail}

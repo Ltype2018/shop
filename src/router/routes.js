@@ -56,7 +56,7 @@ const routes = [
         props: true
     },
     {
-        path:'/test',
+        path:'/login',
         component:Login
     }
 

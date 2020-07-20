@@ -51,7 +51,7 @@ export default {
 
 <style scoped>
 .pay .order-area{
-  background-color: rgba(187, 187, 187, 0.295);
+  background-color: #bbbbbb4b;
 }
 .empty {
   height: 60px;

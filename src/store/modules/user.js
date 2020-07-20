@@ -14,7 +14,7 @@ const mutations = {
     },
     SET_INTRODUCTION(state, introduction){
         state.introduction = introduction
-    },
+    },  
     SET_USERNAME(state, username){
         state.username = username
     },
@@ -30,11 +30,12 @@ const actions = {
      * @param {*} param0 
      * @param {*} loginForm 登录信息
      */
-    login({commit}, loginForm){
+    login({commit, dispatch}, loginForm){
         return login(loginForm).then(res =>{
             const {data} = res
             commit('SET_TOKEN',data.token)
             setToken(data.token)
+            return dispatch('getUserInfo')
         })
     },
 
@@ -56,7 +57,7 @@ const actions = {
      * 登出
      * @param {*} param0 
      */
-    logOut({commit, state, dispatch}){
+    logOut({commit}){
         commit('SET_TOKEN', '')
         removeToken()
 
