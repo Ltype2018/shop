@@ -14,7 +14,8 @@ const base = {
     'circle-content':`/circle_content1.json`,
     'circle-content-test':`/circle_content2.json`,
     'evaluate':`${BASE_URL}/evaluates`,
-    'shop':`${BASE_URL}/shop`
+    'shop':`${BASE_URL}/shop`,
+    'shop-products':`/shop_products.json`
 }
 
 export default base

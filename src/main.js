@@ -9,7 +9,9 @@ Vue.use(SwipeCell).use(Checkbox).use(Card).use(Button).use(Tabbar).use(TabbarIte
   .use(SubmitBar).use(NavBar).use(List).use(Form).use(Skeleton).use(Divider).use(Stepper).use(GoodsAction).use(GoodsActionButton).use(GoodsActionIcon).use(Sku).use(Sidebar).use(SidebarItem)
 
 Vue.config.productionTip = false
-
+Vue.filter('numFilter', function(value){
+  return Number(value).toFixed(2)
+})
 
 new Vue({
   router,

@@ -1,4 +1,5 @@
 <template>
+<!--评价模块-->
   <div class="shop-box-tab" v-if="shop.followers">
     <div class="left">
       <div class="numbers">{{shop.followers}}</div>

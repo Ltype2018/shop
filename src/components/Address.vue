@@ -34,7 +34,7 @@ export default {
           id: "2",
           name: "李四",
           tel: "1310000000",
-          address: "浙江省杭州市拱墅区莫干山路 50 号"
+          address: "湖北省武汉市洪山区南湖花园"
         }
       ]
     };

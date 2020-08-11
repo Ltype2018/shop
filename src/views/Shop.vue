@@ -1,11 +1,20 @@
 <template>
     <div class="shop">
-        shop
+        <ShopHeader/>
+        <ShopProducts/>
     </div>
 </template>
 
 <script>
+import ShopHeader from './ShopHeader'
+import ShopProducts from './ShopProducts'
 export default {
-    name:"Shop"
+    name:"Shop",
+    components:{
+        ShopProducts,
+        ShopHeader
+    }
 }
 </script>
+
+

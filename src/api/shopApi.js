@@ -7,4 +7,8 @@ const getShopData = () =>instance({
     method:"get"
 })
 
-export {getShopData}
+const getShopProduct = () =>instance({
+    url:base["shop-products"],
+    method:"get"
+})
+export {getShopData, getShopProduct}

@@ -26,7 +26,7 @@
         <van-col span="8">
           <div class="btn-container">
             <van-icon name="shop-o" />
-            <span>进入店铺</span>
+            <router-link to="/home/shop"><span>进入店铺</span></router-link>
           </div>
         </van-col>
       </van-row>

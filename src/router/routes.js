@@ -9,9 +9,10 @@ import Address from '@/components/Address'
 import Pay from '@/components/Pay'
 import DiscoverGroupCircle from '@/views/DiscoverGroupCircle'
 import Login from '@/components/Login'
+import Shop from '@/views/Shop'
 
 
-const routes = [
+const routes = [ 
     {
         path: '/home',
         component: Home,
@@ -58,6 +59,14 @@ const routes = [
     {
         path:'/login',
         component:Login
+    },
+    {
+        path:'/',
+        redirect:'/home/home-content'  
+    },
+    {
+        path:'/home/shop',
+        component:Shop
     }
 
 ]

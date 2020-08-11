@@ -16,7 +16,8 @@
     </section>
     <section class="product_info">
       <van-cell :title="`￥${product.price}`" style="color:red; font-size:25px"></van-cell>
-      <van-cell :title="product.title" size="large" :label="product.label"></van-cell>
+      <van-cell :value="product.title" style="font-weight:bold; font-size:18px"/>
+      <van-cell :value="product.label" style="padding-top:0px"/>
     </section>
     <section class="product_user">
       <div class="item_floor">
@@ -78,6 +79,11 @@
         <ShopBox/>
       </div>
     </section>
+    <section class="product_detail_info">
+      <div class="item_floor">
+        <ProductDetailInfo/>
+      </div>
+    </section>
     <section class="product_tobuy">
       <van-goods-action>
         <van-goods-action-icon icon="chat-o" text="客服" />
@@ -108,12 +114,14 @@
 <script>
 import { mapState, mapGetters, mapActions } from "vuex";
 import ProductEvaluate from './ProductEvaluate'
+import ProductDetailInfo from './ProductDetailInfo'
 import ShopBox from '@/views/ShopBox'
 export default {
   name: "ProductDetail",
   components:{
     ProductEvaluate,
-    ShopBox
+    ShopBox,
+    ProductDetailInfo
   },
   props: ["id"],
   data() {
@@ -181,6 +189,9 @@ export default {
 .product_cart {
   background-color: #f7f7f7;
 }
+.product_images .van-swipe {
+  transform: translateZ(0);
+}
 .item_floor {
   margin-top: 20px;
   background-color: #ffffff;
@@ -202,6 +213,12 @@ export default {
         color: #999999;
       }
     }
+  }
+}
+
+.product_info {
+  /deep/ .van-cell::after {
+    display: none !important;
   }
 }
 </style>
