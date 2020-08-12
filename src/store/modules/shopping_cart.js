@@ -24,7 +24,7 @@ const getters = {
             return {
                 title: product.title,
                 price: product.price,
-                img: product.pre_img,
+                img: product.previewImg,
                 id: product.id,
                 quantity,
                 checked
@@ -54,6 +54,7 @@ const getters = {
                 price: product.price,
                 img: product.img,
                 id: product.id,
+                previewImg:product.previewImg,
                 address: product.address,
                 label: product.label
             }
@@ -81,16 +82,20 @@ const mutations = {
      * @param {*} param1 id: product 的id
      * //存入购买商品信息
      */
-    pushProductToCart(state, { id }) {
+    pushProductToCart(state, { id, quantity }) {
         state.items.push({
             id,
-            quantity: 1,
+            quantity,
             checked: true
         })
     },
     incrementItemQuantity(state, { id }) {
         const cartItem = state.items.find(item => item.id === id)
         cartItem.quantity++
+    },
+    incrementProductQuantity(state, {id, quantity}){
+        const cartItem = state.items.find(item =>item.id ===id)
+        cartItem.quantity += quantity
     },
     decrementItemQuantity(state, { id }) {
         const cartItem = state.items.find(item => item.id === id)
@@ -102,6 +107,7 @@ const mutations = {
     },
     toggleItem(state,{id}){
         const cartItem = state.items.find(item =>item.id === id)
+        console.log(cartItem.checked)
         cartItem.checked = !cartItem.checked
     },
   
@@ -121,13 +127,13 @@ const actions = {
      * @param {*} product 
      * //将商品添加到购物车，若不存在则创建，存在则购物车商品数量增加
      */
-    addProductToCart({ state, commit }, product) {
+    addProductToCart({ state, commit }, {product,numbers}) {
         Toast.success("已加入购物车")
         const cartItem = state.items.find(item => item.id === product.id)
         if (!cartItem) {
-            commit('pushProductToCart', { id: product.id })
+            commit('pushProductToCart', { id: product.id, quantity:numbers })
         } else {
-            commit('incrementItemQuantity', cartItem)
+            commit('incrementProductQuantity', {id: product.id, quantity:numbers })
         }
     },
 

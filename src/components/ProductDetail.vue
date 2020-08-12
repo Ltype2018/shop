@@ -16,8 +16,8 @@
     </section>
     <section class="product_info">
       <van-cell :title="`￥${product.price}`" style="color:red; font-size:25px"></van-cell>
-      <van-cell :value="product.title" style="font-weight:bold; font-size:18px"/>
-      <van-cell :value="product.label" style="padding-top:0px"/>
+      <van-cell :value="product.title" style="font-weight:bold; font-size:18px" />
+      <van-cell :value="product.label" style="padding-top:0px" />
     </section>
     <section class="product_user">
       <div class="item_floor">
@@ -36,8 +36,7 @@
                 <span class="item_title">已选</span>
               </div>
               <div class="right">
-                <div class="detail">大</div>
-                <div class="postNotice">内容</div>
+                <div class="detail">{{product.title.slice(0, 8)}}</div>
               </div>
             </div>
           </template>
@@ -50,7 +49,7 @@
               </div>
               <div class="right">
                 <div class="detail">sadg</div>
-                <div class="postNotice">sdga</div>
+                <div class="postNotice">现货</div>
               </div>
             </div>
           </template>
@@ -70,42 +69,43 @@
       </div>
     </section>
     <section class="product_evaluate">
-        <div class="item_floor">
-          <ProductEvaluate/>
-        </div>
+      <div class="item_floor">
+        <ProductEvaluate />
+      </div>
     </section>
     <section class="product_own_shop">
       <div class="item_floor">
-        <ShopBox/>
+        <ShopBox />
       </div>
     </section>
     <section class="product_detail_info">
       <div class="item_floor">
-        <ProductDetailInfo/>
+        <ProductDetailInfo />
       </div>
     </section>
     <section class="product_tobuy">
+      <!--下方购物确认模块-->
       <van-goods-action>
         <van-goods-action-icon icon="chat-o" text="客服" />
-        <van-goods-action-icon
-          icon="cart-o"
-          to="/home/shopping-cart"
-          text="购物车"
-          :badge="itemsLength"
-        />
-        <van-goods-action-button type="warning" text="加入购物车" @click="addProductToCart(product)" />
-        <van-goods-action-button type="danger" text="立即购买" @click.native="changeSku" />
+        <van-goods-action-icon icon="cart-o" text="购物车" :badge="itemsLength" to="/home/shopping-cart" />
+        <van-goods-action-button type="warning" text="加入购物车" @click="changeSku"  />
+        <van-goods-action-button type="danger" text="立即购买"  />
       </van-goods-action>
     </section>
-    <section class="product_sku">
-      <van-sku
-        v-model="show"
-        :sku="sku"
-        :goods="goods"
-        :hide-stock="sku.hide_stock"
-        @add-cart="addProductToCart(product)"
-        @buy-clicked="onBuyClicked"
-      />
+    <section>
+      <!--商品sku-->
+      <van-action-sheet v-model="show">
+        <div class="sku_card">
+          <van-card  :price="product.price | numFilter" :title="product.title.slice(0,8)"  :thumb="product.previewImg"  lazy-load />
+          <div class="num_box">
+            <div>数量</div>
+            <van-stepper  v-model.number="numbers" />
+          </div>
+          <div class="confirm_button">
+            <van-button type="danger"  round size="large" @click="confirmNum">确认</van-button>
+          </div>
+        </div>
+      </van-action-sheet>
     </section>
     <div class="empty"></div>
   </div>
@@ -113,62 +113,35 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from "vuex";
-import ProductEvaluate from './ProductEvaluate'
-import ProductDetailInfo from './ProductDetailInfo'
-import ShopBox from '@/views/ShopBox'
+import ProductEvaluate from "./ProductEvaluate";
+import ProductDetailInfo from "./ProductDetailInfo";
+import ShopBox from "@/views/ShopBox";
 export default {
   name: "ProductDetail",
-  components:{
+  components: {
     ProductEvaluate,
     ShopBox,
-    ProductDetailInfo
+    ProductDetailInfo,
   },
   props: ["id"],
   data() {
     return {
       show: false,
-      sku: {
-        tree: [
-          {
-            k: "颜色",
-            v: [
-              {
-                id: "30349",
-                name: "红色",
-                imgUrl: "http://dummyimage.com/200x200/d179f2",
-                previewImgUrl: "http://dummyimage.com/200x200/d179f2"
-              }
-            ],
-            k_s: "s2"
-          }
-        ],
-        list: [
-          {
-            id: 2259,
-            price: 2500,
-            s2: "30349",
-            s3: "0",
-            stock_num: 110
-          }
-        ],
-        price: "25",
-        stock_num: 110,
-        none_sku: false,
-        hide_stock: false
-      },
-      goods: {
-        picture: "http://dummyimage.com/200x200/d179f2"
-      }
+      numbers:1
     };
   },
   computed: mapState({
     ...mapGetters("shopping_cart", ["productDetailInfo", "itemsLength"]),
     product() {
+      console.log("加载商品信息")
       return this.productDetailInfo(this.id);
-    }
+    },
   }),
   methods: {
     ...mapActions("shopping_cart", ["addProductToCart"]),
+     confirmNum(){
+       this.addProductToCart({product:this.product, numbers:this.numbers})
+     },
     changeSku() {
       this.show = true;
     },
@@ -177,8 +150,8 @@ export default {
     },
     goHome() {
       this.$router.push({ path: "/home/home-content" });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -206,19 +179,44 @@ export default {
       font-weight: bold;
     }
 
-    .right{
+    .right {
       flex-grow: 15;
-      
+
       .postNotice {
         color: #999999;
       }
     }
   }
 }
+.van-card__price{
+  color: red;
 
+  .van-card__price-integer{
+    font-size: 25px;
+  }
+}
 .product_info {
   /deep/ .van-cell::after {
     display: none !important;
   }
+}
+
+.num_box{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.sku_card{
+  padding: 20px 10px  200px 10px;
+}
+
+.confirm_button{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 </style>

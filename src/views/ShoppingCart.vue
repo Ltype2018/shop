@@ -4,12 +4,14 @@
     <!--商品卡片-->
     <template v-if="cartProducts.length">
       <div v-for="item in cartProducts" :key="item.title">
-         <ShoppingCartCard :item ="item"  />
+        <ShoppingCartCard :item="item" />
       </div>
       <!--商品提交栏-->
-      <van-submit-bar :price="100*cartTotalPrice" button-text="提交订单" @submit="onSubmit">
-        <input class="toggle-all" id="toggle-all" type="checkbox" :checked="allChecked"
-        @change="toggleAll(!allChecked)">
+      <van-submit-bar :price="100*cartTotalPrice" button-text="去结算" @submit="onSubmit">
+        <div class="radio-container">
+          <span class="radio-checkbox-img" :class="{active:allChecked}" @click="toggleAll(!allChecked)"></span>
+          <span>全选</span>
+        </div>
       </van-submit-bar>
     </template>
     <!--购物车为空时显示-->
@@ -25,25 +27,29 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations} from "vuex";
-import ShoppingCartCard from '@/components/ShoppingCartCard'
+import { mapGetters, mapMutations } from "vuex";
+import ShoppingCartCard from "@/components/ShoppingCartCard";
 export default {
   name: "ShoppingCart",
-  components:{
-    ShoppingCartCard
+  components: {
+    ShoppingCartCard,
   },
   computed: {
-    ...mapGetters("shopping_cart", ["cartProducts", "cartTotalPrice","allChecked"])
+    ...mapGetters("shopping_cart", [
+      "cartProducts",
+      "cartTotalPrice",
+      "allChecked",
+    ]),
   },
   methods: {
-    ...mapMutations('shopping_cart',['toggleAll']),
+    ...mapMutations("shopping_cart", ["toggleAll"]),
     onClickLeft() {
-      this.$router.go(-1)
+      this.$router.go(-1);
     },
-    onSubmit(){
-      this.$router.push({path:"/home/pay"})
-    }
-  }
+    onSubmit() {
+      this.$router.push({ path: "/home/pay" });
+    },
+  },
 };
 </script>
 
@@ -55,7 +61,21 @@ export default {
   width: 90px;
   height: 90px;
 }
-.empty{
+.radio-checkbox-img {
+  background: url("../assets/checkimg.png") no-repeat;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+.radio-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.active{
+  background-position:-2px -33px !important ;
+}
+.empty {
   height: 60px;
 }
 </style>
