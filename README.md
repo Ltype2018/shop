@@ -1,12 +1,12 @@
-#####一个shop商城 
+##### 一个shop商城 
 >* 运行:  ```npm run serve     ```
 
-#####使用的包
+##### 使用的包
 + vant , vue, vuex , vue-router, axios
 + rap2(在线mock数据),
 + postcss-px-to-viewport  
 
-#####包含模块
+##### 包含模块
 + 商品列表展示
 + 商品详情展示
   + 商品详情
@@ -20,7 +20,7 @@
  + 用户登录
  + 个人信息管理
  
-#####程序构成
+##### 程序构成
 + /public  - 封装本地请求的json文件
 + /src -vue项目文件
  + /api  -vue文件中请求数据接口
