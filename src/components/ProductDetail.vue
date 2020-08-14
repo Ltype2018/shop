@@ -15,7 +15,7 @@
       </van-swipe>
     </section>
     <section class="product_info">
-      <van-cell :title="`￥${product.price}`" style="color:red; font-size:25px"></van-cell>
+      <van-cell :title="product.price | numFilter" style="color:red; font-size:25px"  class="price-box"/>
       <van-cell :value="product.title" style="font-weight:bold; font-size:18px" />
       <van-cell :value="product.label" style="padding-top:0px" />
     </section>
@@ -112,7 +112,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import ProductEvaluate from "./ProductEvaluate";
 import ProductDetailInfo from "./ProductDetailInfo";
 import ShopBox from "@/views/ShopBox";
@@ -130,13 +130,15 @@ export default {
       numbers:1
     };
   },
-  computed: mapState({
-    ...mapGetters("shopping_cart", ["productDetailInfo", "itemsLength"]),
+  computed:{
+       ...mapGetters("shopping_cart", ["productDetailInfo", "itemsLength"]),
     product() {
       console.log("加载商品信息")
       return this.productDetailInfo(this.id);
     },
-  }),
+  }
+ 
+  ,
   methods: {
     ...mapActions("shopping_cart", ["addProductToCart"]),
      confirmNum(){
@@ -188,6 +190,7 @@ export default {
     }
   }
 }
+
 .van-card__price{
   color: red;
 
@@ -198,6 +201,12 @@ export default {
 .product_info {
   /deep/ .van-cell::after {
     display: none !important;
+  }
+}
+.price-box{
+  span::before{
+    content: "￥";
+    font-size: 15px;
   }
 }
 

@@ -23,7 +23,7 @@
     <section class="mid-img">
       <van-swipe :autoplay="3000">
         <van-swipe-item v-for="(midImg, index) in midImgs" :key="index">
-          <van-image lazy-load :src="midImg" />
+          <van-image lazy-load :src="midImg" width="100%" />
         </van-swipe-item>
       </van-swipe>
     </section>

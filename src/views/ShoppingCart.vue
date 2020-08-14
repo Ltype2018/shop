@@ -7,7 +7,7 @@
         <ShoppingCartCard :item="item" />
       </div>
       <!--商品提交栏-->
-      <van-submit-bar :price="100*cartTotalPrice" button-text="去结算" @submit="onSubmit">
+      <van-submit-bar :price="100*cartTotalPrice" :button-text="`去结算(${toggleProductLength}件)`" @submit="onSubmit">
         <div class="radio-container">
           <span class="radio-checkbox-img" :class="{active:allChecked}" @click="toggleAll(!allChecked)"></span>
           <span>全选</span>
@@ -39,6 +39,7 @@ export default {
       "cartProducts",
       "cartTotalPrice",
       "allChecked",
+      "toggleProductLength"
     ]),
   },
   methods: {
@@ -54,6 +55,9 @@ export default {
 </script>
 
 <style scoped>
+.shopping-cart{
+  background-color: #f7f7f7;
+}
 .delete-button {
   height: 100%;
 }
@@ -74,6 +78,9 @@ export default {
 }
 .active{
   background-position:-2px -33px !important ;
+}
+.van-submit-bar__button {
+  width: 130px;
 }
 .empty {
   height: 60px;

@@ -1,9 +1,10 @@
 <template>
   <div class="products-card">
     <van-grid :border="false" :column-num="2">
-      <van-grid-item  v-for="product in productsList" :key="product.title">
+      <van-grid-item v-for="product in productsList" :key="product.title">
         <router-link :to="{path:`/product/detail/${product.id}`}">
-          <van-image lazy-load :src="product.pre_img"></van-image>
+          <van-image :src="product.showImg" width="100%">
+          </van-image>
           <van-cell :title="product.title" />
         </router-link>
         <van-cell :title="`￥ ${product.price}`" style="color:red;font-size:18px"></van-cell>
@@ -18,22 +19,39 @@ import { mapActions } from "vuex";
 export default {
   name: "ProductsCard",
   props: ["productsList"],
-  methods:mapActions("shopping_cart", ["addProductToCart"])
+  data() {
+    return {
+      loadingImg: require("@/assets/tempImg.png"),
+    };
+  },
+  methods: mapActions("shopping_cart", ["addProductToCart"]),
 };
 </script>
 
-<style scoped>
-.van-grid-item{
+<style lang="scss" scoped>
+.van-grid-item {
   padding: 3px;
-  background-color:#f7f7f7;
+  background-color: #f7f7f7;
 }
-.van-grid-item >>> .van-grid-item__content {
+.van-grid-item {
+  /deep/ .van-grid-item__content {
     padding: 0px;
+  }
 }
+
 .van-cell {
   padding: 0px;
+
+  .van-cell__title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
 }
-.empty{
+
+.empty {
   height: 60px;
 }
 </style>

@@ -1,15 +1,7 @@
 import Home from '@/views/Home'
 import HomeContent from '@/views/HomeContent'
-import ShoppingCart from '@/views/ShoppingCart'
-import Discover from '@/views/Discover'
-import User from '@/views/User'
-import Categories from '@/views/Categories'
-import ProductDetail from '@/components/ProductDetail'
-import Address from '@/components/Address'
-import Pay from '@/components/Pay'
-import DiscoverGroupCircle from '@/views/DiscoverGroupCircle'
 import Login from '@/components/Login'
-import Shop from '@/views/Shop'
+
 
 
 const routes = [ 
@@ -23,37 +15,37 @@ const routes = [
             },
             {
                 path: 'shopping-cart',
-                component: ShoppingCart
+                component: () =>import('@/views/ShoppingCart')
             },
             {
                 path: 'discover',
-                component: Discover
+                component:() => import('@/views/Discover')
             },
             {
                 path: 'user',
-                component: User
+                component: () => import('@/views/User')
             },
             {
                 path: 'address',
-                component: Address
+                component: () => import('@/components/Address')
             },
             {
                 path: 'pay',
-                component: Pay
+                component: () => import('@/components/Pay')
             },
             {
                 path: 'category',
-                component: Categories
+                component: () => import('@/views/Categories')
             },
             {
                 path: 'circle',
-                component: DiscoverGroupCircle
+                component: () => import('@/views/DiscoverGroupCircle')
             }
         ],
     },
     {   //将商品id传参到详情页面
         path: '/product/detail/:id',
-        component: ProductDetail,
+        component: () => import('@/components/ProductDetail'),
         props: true
     },
     {
@@ -66,7 +58,7 @@ const routes = [
     },
     {
         path:'/home/shop',
-        component:Shop
+        component: () => import('@/views/Shop')
     }
 
 ]

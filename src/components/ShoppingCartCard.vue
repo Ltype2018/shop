@@ -68,6 +68,10 @@ export default {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
+  padding: 20px 20px 20px 0;
+  border-radius: 15px;
+  background-color: #ffffff;
 
   .radio-container{
     display: flex;
@@ -76,7 +80,7 @@ export default {
   }
 
   .product-cart-info{
-    flex-grow: 5;
+    flex-grow: 1;
   }
 }
 .radio-checkbox-img {
@@ -88,5 +92,9 @@ export default {
 
 .active{
   background-position:-2px -33px !important ;
+}
+.van-card{
+  padding: 0;
+  background-color: #ffffff ;
 }
 </style>

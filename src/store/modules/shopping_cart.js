@@ -7,6 +7,10 @@ const state = {
 
 //getters
 const getters = {
+    /**
+     * 全部商品数目
+     * @param {*} state 
+     */
     itemsLength(state) {
         return state.items.reduce((total,item) =>{ return total + item.quantity}, 0)
     },
@@ -33,6 +37,14 @@ const getters = {
     },
     filteredCartProducts(state, getters) {
         return getters.cartProducts.filter(value => value.checked)
+    },
+    /**
+     * 选中的商品数目
+     * @param {*} state 
+     * @param {*} getters 
+     */
+    toggleProductLength(state, getters){
+        return getters.filteredCartProducts.reduce((total, item) =>{return total + item.quantity}, 0)
     },
     /**
      * 
