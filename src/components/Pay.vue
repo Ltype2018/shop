@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import OrderCard from './OrderCard'
+import OrderCard from '@/views/order/OrderCard'
 export default {
   name: "Pay",
   components:{
@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     onClickLeft() {
-      this.$router.push("/home/home-content");
+      this.$router.push("@/views/home/home-content");
     }
   }
 };

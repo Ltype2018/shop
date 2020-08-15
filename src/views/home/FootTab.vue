@@ -9,7 +9,7 @@
         </van-tabbar>
     </div>
 </template>
-<van-icon name="" />
+
 <script>
 import {mapGetters} from 'vuex'
 export default {

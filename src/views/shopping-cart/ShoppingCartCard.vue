@@ -84,14 +84,14 @@ export default {
   }
 }
 .radio-checkbox-img {
-  background: url("../assets/checkimg.png") no-repeat;
+  background: url("../../assets/checkimg.png") no-repeat;
   display: inline-block;
   width: 30px;
   height: 30px;
 }
 
 .active{
-  background-position:-2px -33px !important ;
+  background-position:-2px -30px !important ;
 }
 .van-card{
   padding: 0;

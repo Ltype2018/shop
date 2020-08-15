@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import FootTab from "@/views/FootTab";
+import FootTab from "./FootTab";
 export default {
   name: "Home",
   components: {

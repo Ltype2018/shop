@@ -1,5 +1,5 @@
-import Home from '@/views/Home'
-import HomeContent from '@/views/HomeContent'
+import Home from '@/views/home/Home'
+import HomeContent from '@/views/home/HomeContent'
 import Login from '@/components/Login'
 
 
@@ -15,15 +15,15 @@ const routes = [
             },
             {
                 path: 'shopping-cart',
-                component: () =>import('@/views/ShoppingCart')
+                component: () =>import('@/views/shopping-cart/ShoppingCart')
             },
             {
                 path: 'discover',
-                component:() => import('@/views/Discover')
+                component:() => import('@/views/discover/Discover')
             },
             {
                 path: 'user',
-                component: () => import('@/views/User')
+                component: () => import('@/views/user/User')
             },
             {
                 path: 'address',
@@ -35,17 +35,17 @@ const routes = [
             },
             {
                 path: 'category',
-                component: () => import('@/views/Categories')
+                component: () => import('@/views/categories/Categories')
             },
             {
                 path: 'circle',
-                component: () => import('@/views/DiscoverGroupCircle')
+                component: () => import('@/views/discover/DiscoverGroupCircle')
             }
         ],
     },
     {   //将商品id传参到详情页面
         path: '/product/detail/:id',
-        component: () => import('@/components/ProductDetail'),
+        component: () => import('@/views/product-detail/ProductDetail'),
         props: true
     },
     {
@@ -58,7 +58,7 @@ const routes = [
     },
     {
         path:'/home/shop',
-        component: () => import('@/views/Shop')
+        component: () => import('@/views/shop/Shop')
     }
 
 ]

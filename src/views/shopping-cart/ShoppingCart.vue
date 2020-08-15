@@ -1,6 +1,5 @@
 <template>
   <div class="shopping-cart">
-    <van-nav-bar title="购物车" left-text="返回" left-arrow @click-left="onClickLeft" />
     <!--商品卡片-->
     <template v-if="cartProducts.length">
       <div v-for="item in cartProducts" :key="item.title">
@@ -28,7 +27,7 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import ShoppingCartCard from "@/components/ShoppingCartCard";
+import ShoppingCartCard from "./ShoppingCartCard";
 export default {
   name: "ShoppingCart",
   components: {
@@ -66,7 +65,7 @@ export default {
   height: 90px;
 }
 .radio-checkbox-img {
-  background: url("../assets/checkimg.png") no-repeat;
+  background: url("../../assets/checkimg.png") no-repeat;
   display: inline-block;
   width: 30px;
   height: 30px;
@@ -77,7 +76,7 @@ export default {
   align-items: center;
 }
 .active{
-  background-position:-2px -33px !important ;
+  background-position:0px -31px !important ;
 }
 .van-submit-bar__button {
   width: 130px;

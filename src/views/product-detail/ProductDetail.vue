@@ -1,12 +1,7 @@
 <template>
   <!--商品详情-->
   <div class="product_cart">
-    <van-icon
-      name="wap-home-o"
-      size="30px"
-      style="position:absolute; z-index:999; top:40px; left:30px"
-      @click="goHome"
-    />
+    <NavBar/>
     <section class="product_images">
       <van-swipe>
         <van-swipe-item v-for="(image,index) in product.img" :key="index">
@@ -75,7 +70,7 @@
     </section>
     <section class="product_own_shop">
       <div class="item_floor">
-        <ShopBox />
+
       </div>
     </section>
     <section class="product_detail_info">
@@ -113,14 +108,14 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+
 import ProductEvaluate from "./ProductEvaluate";
 import ProductDetailInfo from "./ProductDetailInfo";
-import ShopBox from "@/views/ShopBox";
+
 export default {
   name: "ProductDetail",
   components: {
     ProductEvaluate,
-    ShopBox,
     ProductDetailInfo,
   },
   props: ["id"],

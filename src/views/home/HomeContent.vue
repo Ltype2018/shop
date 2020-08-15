@@ -28,18 +28,18 @@
       </van-swipe>
     </section>
     <!--商品列表-->
-    <keep-alive><productsCard :productsList="productsList"/></keep-alive>
+    <keep-alive><ProductList :productsList="productsList"/></keep-alive>
     
   </div>
 </template>
 
 <script>
-import ProductsCard from '@/components/ProductsCard'
+import ProductList from '@/components/product-list/ProductList'
 import {mapState} from 'vuex'
 export default {
   name: "HomeContent",
   components:{
-    ProductsCard
+    ProductList
   },
   data() {
     return {
